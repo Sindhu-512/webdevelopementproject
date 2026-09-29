@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic HTML5 Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Optimized Metadata -->
+    <meta name="description"
+          content="Learn more about Bandari Sindhu, including education, interests, software development experience, and web technology skills.">
+
+    <meta name="author" content="Bandari Sindhu">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="About Bandari Sindhu">
+    <meta property="og:description"
+          content="Learn about Bandari Sindhu's education, interests, and experience in software development and web technologies.">
+    <meta property="og:type" content="profile">
+
+    <!-- SEO-friendly title -->
+    <title>About Bandari Sindhu | Education &amp; Software Development</title>
+
+    <style>
+        /* =========================
+           ACCESSIBILITY
+        ========================== */
+
+        /* Skip navigation link */
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background: #000;
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        /* Show skip link when keyboard focused */
+        .skip-link:focus {
+            top: 10px;
+        }
+
+        /* Visible keyboard focus */
+        :focus-visible {
+            outline: 3px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+        /* Basic readable styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f7ff;
+            color: #222;
+        }
+
+        header {
+            background-color: #4b4ded;
+            color: #fff;
+            padding: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =================================================
+         1. ACCESSIBLE SKIP NAVIGATION
+         Allows keyboard and screen-reader users to
+         skip directly to the main content.
+    ================================================== -->
+
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+
+    <!-- =================================================
+         2. SEMANTIC HEADER
+    ================================================== -->
+
+    <header>
+
+        <h1>About Bandari Sindhu</h1>
+
+
+        <!-- =================================================
+             3. SEMANTIC NAVIGATION
+
+             aria-label identifies this navigation landmark
+             to screen readers.
+        ================================================== -->
+
+        <nav aria-label="Main navigation">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html" aria-current="page">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="projects.html">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="skills.html">
+                        Skills
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =================================================
+         4. SEMANTIC MAIN CONTENT
+
+         tabindex="-1" allows the skip link to move
+         keyboard focus to the main content.
+    ================================================== -->
+
+    <main id="main-content" tabindex="-1">
+
+
+        <!-- =================================================
+             ABOUT ME SECTION
+        ================================================== -->
+
+        <section aria-labelledby="about-me-heading">
+
+            <h2 id="about-me-heading">
+                About Me
+            </h2>
+
+
+            <!-- Article represents independent content -->
+            <article>
+
+                <h3>My Introduction</h3>
+
+                <p>
+                    I am a student interested in software development
+                    and web technologies.
+                </p>
+
+                <p>
+                    I enjoy learning programming languages and building
+                    practical projects.
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- =================================================
+             EDUCATION SECTION
+        ================================================== -->
+
+        <section aria-labelledby="education-heading">
+
+            <h2 id="education-heading">
+                Education
+            </h2>
+
+
+            <article>
+
+                <h3>My Education</h3>
+
+                <p>
+                    I am currently pursuing my education in the
+                    field of computer science and technology.
+                </p>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- =================================================
+         5. SEMANTIC FOOTER
+    ================================================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Bandari Sindhu. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic HTML5 Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Optimized Metadata -->
+    <meta name="description"
+          content="Explore Bandari Sindhu's web development, software engineering, portfolio, Dream Achiever, and IR Sensor Alarm projects.">
+
+    <meta name="author" content="Bandari Sindhu">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Projects | Bandari Sindhu">
+    <meta property="og:description"
+          content="Explore Bandari Sindhu's software development, web development, and IoT projects.">
+    <meta property="og:type" content="website">
+
+    <!-- SEO-friendly page title -->
+    <title>Projects | Bandari Sindhu - Software Development Portfolio</title>
+
+
+    <!-- Accessibility and Page Styling -->
+    <style>
+
+        /* =========================================
+           ACCESSIBLE SKIP NAVIGATION
+        ========================================== */
+
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        /* Make skip link visible when keyboard focused */
+        .skip-link:focus {
+            top: 10px;
+        }
+
+
+        /* =========================================
+           KEYBOARD FOCUS
+        ========================================== */
+
+        :focus-visible {
+            outline: 3px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+
+        /* =========================================
+           BASIC ACCESSIBLE STYLING
+        ========================================== */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f7ff;
+            color: #222;
+        }
+
+        header {
+            background-color: #4b4ded;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        section {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        article {
+            border-bottom: 1px solid #ccc;
+            padding: 20px 0;
+        }
+
+        article:last-child {
+            border-bottom: none;
+        }
+
+        article a {
+            color: #003f91;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         1. SKIP NAVIGATION
+         Allows keyboard users to skip the header
+         and go directly to the main content.
+    ========================================== -->
+
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+
+    <!-- =========================================
+         2. SEMANTIC HEADER
+    ========================================== -->
+
+    <header>
+
+        <h1>My Projects</h1>
+
+
+        <!-- =========================================
+             3. SEMANTIC NAVIGATION
+
+             aria-label helps screen readers identify
+             this navigation landmark.
+        ========================================== -->
+
+        <nav aria-label="Main navigation">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="projects.html" aria-current="page">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="skills.html">
+                        Skills
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         4. SEMANTIC MAIN CONTENT
+
+         tabindex="-1" allows the skip link to move
+         keyboard focus to this main section.
+    ========================================== -->
+
+    <main id="main-content" tabindex="-1">
+
+
+        <!-- =========================================
+             PROJECT SECTION
+        ========================================== -->
+
+        <section aria-labelledby="project-list-heading">
+
+            <h2 id="project-list-heading">
+                Featured Projects
+            </h2>
+
+
+            <!-- PROJECT 1 -->
+            <article>
+
+                <h3>Personal Portfolio</h3>
+
+                <p>
+                    A semantic HTML5 portfolio website designed
+                    according to modern accessibility principles
+                    and web standards.
+                </p>
+
+                <a href="portfolio.html">
+                    View Personal Portfolio Project
+                </a>
+
+            </article>
+
+
+            <!-- PROJECT 2 -->
+            <article>
+
+                <h3>Dream Achiever</h3>
+
+                <p>
+                    A website project designed to help users organize
+                    their goals and work towards achieving them.
+                </p>
+
+                <a href="dream-achiever.html">
+                    View Dream Achiever Project
+                </a>
+
+            </article>
+
+
+            <!-- PROJECT 3 -->
+            <article>
+
+                <h3>IR Sensor Alarm</h3>
+
+                <p>
+                    A hardware-based IoT project using an IR sensor
+                    to detect objects and trigger an alarm.
+                </p>
+
+                <a href="ir-sensor.html">
+                    View IR Sensor Alarm Project
+                </a>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         5. SEMANTIC FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Bandari Sindhu. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

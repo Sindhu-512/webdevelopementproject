@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic HTML5 Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Optimized Metadata -->
+    <meta name="description"
+          content="Explore Bandari Sindhu's technical skills in HTML5, CSS, JavaScript, Java, Data Structures and Algorithms, and web development.">
+
+    <meta name="author" content="Bandari Sindhu">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Skills | Bandari Sindhu">
+    <meta property="og:description"
+          content="Explore Bandari Sindhu's technical and programming skills.">
+    <meta property="og:type" content="profile">
+
+    <!-- SEO-friendly page title -->
+    <title>Skills | Bandari Sindhu - Technical &amp; Programming Skills</title>
+
+
+    <!-- =========================================
+         ACCESSIBILITY AND STYLING
+    ========================================== -->
+
+    <style>
+
+        /* =========================================
+           SKIP NAVIGATION
+        ========================================== */
+
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        /* Show skip link when focused */
+        .skip-link:focus {
+            top: 10px;
+        }
+
+
+        /* =========================================
+           KEYBOARD FOCUS
+        ========================================== */
+
+        :focus-visible {
+            outline: 3px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+
+        /* =========================================
+           BASIC ACCESSIBLE STYLING
+        ========================================== */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f7ff;
+            color: #222;
+        }
+
+        header {
+            background-color: #4b4ded;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        section {
+            background-color: #ffffff;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        section ul {
+            padding-left: 25px;
+        }
+
+        section li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         1. ACCESSIBLE SKIP LINK
+
+         Allows keyboard and screen-reader users
+         to skip directly to the main content.
+    ========================================== -->
+
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+
+    <!-- =========================================
+         2. SEMANTIC HEADER
+    ========================================== -->
+
+    <header>
+
+        <h1>My Skills</h1>
+
+
+        <!-- =========================================
+             3. SEMANTIC NAVIGATION
+
+             aria-label identifies this navigation
+             landmark to screen readers.
+        ========================================== -->
+
+        <nav aria-label="Main navigation">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="projects.html">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="skills.html" aria-current="page">
+                        Skills
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         4. SEMANTIC MAIN CONTENT
+
+         tabindex="-1" allows the skip link to
+         move keyboard focus here.
+    ========================================== -->
+
+    <main id="main-content" tabindex="-1">
+
+
+        <!-- =========================================
+             TECHNICAL SKILLS SECTION
+        ========================================== -->
+
+        <section aria-labelledby="technical-skills-heading">
+
+            <h2 id="technical-skills-heading">
+                Technical Skills
+            </h2>
+
+
+            <!-- Semantic unordered list of skills -->
+            <ul>
+
+                <li>HTML5</li>
+
+                <li>CSS</li>
+
+                <li>JavaScript</li>
+
+                <li>Java</li>
+
+                <li>
+                    Data Structures and Algorithms
+                </li>
+
+                <li>Web Development</li>
+
+            </ul>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         5. SEMANTIC FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Bandari Sindhu. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

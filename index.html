@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+          content="Bandari Sindhu's personal portfolio showcasing web development skills, Java programming, software projects, education, and experience.">
+
+    <meta name="author" content="Bandari Sindhu">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Bandari Sindhu | Personal Portfolio">
+    <meta property="og:description"
+          content="Explore Bandari Sindhu's skills, projects, education, and experience in software development.">
+    <meta property="og:type" content="website">
+
+    <title>Bandari Sindhu | Personal Portfolio</title>
+
+    <style>
+        /* ==============================
+           ACCESSIBILITY
+        ============================== */
+
+        /* Skip link - visible when focused */
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background: #000;
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 10px;
+        }
+
+        /* Clear keyboard focus */
+        :focus-visible {
+            outline: 3px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+        /* ==============================
+           BASIC LAYOUT
+        ============================== */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f7ff;
+            color: #222;
+        }
+
+        header {
+            background-color: #4b4ded;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+
+        nav a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        section,
+        aside {
+            background: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        section h2,
+        aside h2 {
+            margin-top: 0;
+        }
+
+        article {
+            margin-top: 15px;
+        }
+
+        article a {
+            color: #003f91;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        footer nav ul {
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+        1. ACCESSIBLE SKIP LINK
+        Allows keyboard and screen-reader users to skip navigation.
+    -->
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+
+    <!--
+        2. SEMANTIC HEADER
+        Native HTML5 landmark - no unnecessary role needed.
+    -->
+    <header>
+
+        <h1>Bandari Sindhu</h1>
+
+        <!--
+            3. SEMANTIC NAVIGATION
+            aria-label clearly identifies this navigation landmark.
+        -->
+        <nav aria-label="Main navigation">
+
+            <ul>
+                <li>
+                    <a href="index.html" aria-current="page">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="projects.html">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="skills.html">
+                        Skills
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!--
+        4. MAIN CONTENT
+        tabindex="-1" allows the skip link to move keyboard focus here.
+    -->
+    <main id="main-content" tabindex="-1">
+
+        <!-- INTRODUCTION -->
+        <section aria-labelledby="intro-heading">
+
+            <h2 id="intro-heading">
+                Welcome to My Portfolio
+            </h2>
+
+            <p>
+                Hello! I am Bandari Sindhu, a passionate student and
+                aspiring software engineer. I enjoy creating accessible,
+                semantic websites and learning modern web technologies.
+            </p>
+
+            <p>
+                Explore my portfolio to learn more about my technical
+                skills, software projects, and background.
+            </p>
+
+        </section>
+
+
+        <!-- ABOUT SECTION -->
+        <section aria-labelledby="about-heading">
+
+            <h2 id="about-heading">
+                About Me
+            </h2>
+
+            <article>
+
+                <h3>Who I Am</h3>
+
+                <p>
+                    I am interested in web development, Java programming,
+                    and modern software engineering. I continuously work
+                    to improve my problem-solving abilities and build
+                    intuitive user experiences.
+                </p>
+
+                <a href="about.html">
+                    Read more about Bandari Sindhu
+                </a>
+
+            </article>
+
+        </section>
+
+
+        <!-- PROJECTS SECTION -->
+        <section aria-labelledby="projects-heading">
+
+            <h2 id="projects-heading">
+                Featured Projects
+            </h2>
+
+            <article>
+
+                <h3>Portfolio Website</h3>
+
+                <p>
+                    A semantic and accessible personal portfolio website
+                    developed using modern HTML5 standards and
+                    accessibility practices.
+                </p>
+
+                <a href="projects.html">
+                    View all projects
+                </a>
+
+            </article>
+
+        </section>
+
+
+        <!--
+            ASIDE = supplementary information
+        -->
+        <aside aria-labelledby="quick-info">
+
+            <h2 id="quick-info">
+                Quick Information
+            </h2>
+
+            <ul>
+                <li>Web Development</li>
+                <li>Java Programming</li>
+                <li>HTML5 &amp; CSS3</li>
+                <li>JavaScript</li>
+            </ul>
+
+        </aside>
+
+    </main>
+
+
+    <!--
+        5. SEMANTIC FOOTER
+    -->
+    <footer>
+
+        <p>
+            &copy; 2026 Bandari Sindhu. All Rights Reserved.
+        </p>
+
+        <nav aria-label="Footer navigation">
+
+            <ul>
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </footer>
+
+</body>
+</html>
