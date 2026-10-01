@@ -1,328 +1,859 @@
-<!DOCTYPE html>
+A<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <!-- Responsive Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <meta name="description"
-          content="Bandari Sindhu's personal portfolio showcasing web development skills, Java programming, software projects, education, and experience.">
-
+    <meta name="description" content="Personal portfolio website of Bandari Sindhu showcasing web development skills, software projects, education, and experience.">
+    <meta name="keywords" content="portfolio, web developer, HTML5, CSS, JavaScript, Java, projects, Bandari Sindhu">
     <meta name="author" content="Bandari Sindhu">
     <meta name="robots" content="index, follow">
-
-    <!-- Open Graph SEO -->
-    <meta property="og:title" content="Bandari Sindhu | Personal Portfolio">
-    <meta property="og:description"
-          content="Explore Bandari Sindhu's skills, projects, education, and experience in software development.">
-    <meta property="og:type" content="website">
 
     <title>Bandari Sindhu | Personal Portfolio</title>
 
     <style>
-        /* ==============================
-           ACCESSIBILITY
-        ============================== */
 
-        /* Skip link - visible when focused */
+        /* =====================================================
+           1. CSS VARIABLES
+           ===================================================== */
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #7c3aed;
+
+            --background: #f5f7ff;
+            --surface: #ffffff;
+            --surface-alt: #eef2ff;
+
+            --text: #1f2937;
+            --text-light: #64748b;
+
+            --border: #dbe2f0;
+
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.12);
+
+            --radius-sm: 8px;
+            --radius-lg: 18px;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+
+            --max-width: 1200px;
+
+            --transition: 0.3s ease;
+        }
+
+
+        /* =====================================================
+           DARK MODE
+           ===================================================== */
+
+        body.dark-mode {
+            --background: #0f172a;
+            --surface: #1e293b;
+            --surface-alt: #273449;
+
+            --text: #f8fafc;
+            --text-light: #cbd5e1;
+
+            --border: #475569;
+
+            --primary: #818cf8;
+            --primary-dark: #a5b4fc;
+
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* =====================================================
+           2. RESET / GLOBAL STYLES
+           ===================================================== */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(79, 70, 229, 0.12),
+                    transparent 35%
+                ),
+                var(--background);
+
+            color: var(--text);
+
+            transition:
+                background var(--transition),
+                color var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+
+        /* =====================================================
+           3. ACCESSIBILITY
+           ===================================================== */
+
         .skip-link {
-            position: absolute;
-            top: -50px;
-            left: 10px;
+            position: fixed;
+            top: -100px;
+            left: 1rem;
+
             background: #000;
             color: #fff;
-            padding: 10px 16px;
-            text-decoration: none;
-            font-weight: bold;
-            z-index: 1000;
+
+            padding: 0.75rem 1.25rem;
+
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+
+            z-index: 9999;
+
+            transition: top var(--transition);
         }
 
         .skip-link:focus {
-            top: 10px;
+            top: 0;
         }
 
-        /* Clear keyboard focus */
         :focus-visible {
             outline: 3px solid #005fcc;
-            outline-offset: 3px;
+            outline-offset: 4px;
         }
 
-        /* ==============================
-           BASIC LAYOUT
-        ============================== */
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f5f7ff;
-            color: #222;
-        }
+        /* =====================================================
+           4. HEADER
+           ===================================================== */
 
         header {
-            background-color: #4b4ded;
-            color: white;
-            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: color-mix(
+                in srgb,
+                var(--surface) 90%,
+                transparent
+            );
+
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid var(--border);
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-container {
+            width: min(100% - 2rem, var(--max-width));
+            margin-inline: auto;
+
+            padding-block: 1rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
         }
 
         header h1 {
-            margin: 0;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        nav ul {
+
+        /* =====================================================
+           5. NAVIGATION - FLEXBOX
+           ===================================================== */
+
+        .main-nav ul {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            list-style: none;
-            padding: 0;
-            margin: 15px 0 0;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
-        nav a {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
+        .main-nav a {
+            display: block;
+
+            padding: 0.5rem 0.75rem;
+
+            border-radius: var(--radius-sm);
+
+            color: var(--text);
+
+            transition:
+                background var(--transition),
+                color var(--transition),
+                transform var(--transition);
         }
 
-        nav a:hover,
-        nav a:focus-visible {
-            text-decoration: underline;
+        .main-nav a:hover,
+        .main-nav a[aria-current="page"] {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
         }
+
+
+        /* =====================================================
+           6. THEME BUTTON
+           ===================================================== */
+
+        .theme-button {
+            border: 1px solid var(--border);
+
+            background: var(--surface);
+
+            color: var(--text);
+
+            padding: 0.6rem 1rem;
+
+            border-radius: 999px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition:
+                background var(--transition),
+                transform var(--transition);
+        }
+
+        .theme-button:hover {
+            background: var(--surface-alt);
+            transform: scale(1.05);
+        }
+
+
+        /* =====================================================
+           7. MAIN CONTAINER
+           ===================================================== */
 
         main {
-            max-width: 1000px;
-            margin: auto;
-            padding: 30px 20px;
+            width: min(100% - 2rem, var(--max-width));
+
+            margin-inline: auto;
+
+            padding-block: var(--spacing-lg);
         }
 
-        section,
-        aside {
-            background: white;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
+
+        /* =====================================================
+           8. HERO / INTRODUCTION
+           ===================================================== */
+
+        .hero {
+            min-height: 70vh;
+
+            display: grid;
+
+            place-items: center;
+
+            text-align: center;
+
+            padding: var(--spacing-lg);
+
+            border-radius: var(--radius-lg);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(79, 70, 229, 0.12),
+                    rgba(124, 58, 237, 0.08)
+                );
+
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow-lg);
+
+            overflow: hidden;
+
+            position: relative;
         }
 
-        section h2,
-        aside h2 {
-            margin-top: 0;
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: rgba(79, 70, 229, 0.12);
+
+            top: -100px;
+            right: -100px;
+
+            filter: blur(10px);
         }
 
-        article {
-            margin-top: 15px;
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
         }
 
-        article a {
-            color: #003f91;
-            font-weight: bold;
+        .hero h2 {
+            font-size: clamp(2rem, 8vw, 4rem);
+
+            line-height: 1.1;
+
+            margin-bottom: var(--spacing-md);
+
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+
+            color: var(--text-light);
+
+            margin-bottom: 1rem;
+        }
+
+
+        /* =====================================================
+           9. CONTENT GRID - CSS GRID
+           ===================================================== */
+
+        .content-grid {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: var(--spacing-md);
+
+            margin-top: var(--spacing-xl);
+        }
+
+
+        /* =====================================================
+           10. CARDS
+           ===================================================== */
+
+        .card {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-lg);
+
+            padding: var(--spacing-md);
+
+            box-shadow: var(--shadow-sm);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h2 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+
+            margin-bottom: var(--spacing-sm);
+        }
+
+
+        /* =====================================================
+           11. PROJECT CARD
+           ===================================================== */
+
+        .project-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--surface),
+                    var(--surface-alt)
+                );
+        }
+
+
+        /* =====================================================
+           12. BUTTON
+           ===================================================== */
+
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0.75rem 1.25rem;
+
+            border-radius: 999px;
+
+            background: var(--primary);
+
+            color: #fff;
+
+            transition:
+                transform var(--transition),
+                background var(--transition);
+        }
+
+        .button:hover {
+            background: var(--primary-dark);
+
+            color: #fff;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =====================================================
+           13. QUICK INFORMATION
+           ===================================================== */
+
+        .quick-info ul {
+            display: grid;
+
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(140px, 1fr)
+            );
+
+            gap: 0.75rem;
+        }
+
+        .quick-info li {
+            padding: 0.8rem;
+
+            background: var(--surface-alt);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-sm);
+
+            text-align: center;
+
+            font-weight: 600;
+
+            transition: transform var(--transition);
+        }
+
+        .quick-info li:hover {
+            transform: scale(1.04);
+        }
+
+
+        /* =====================================================
+           14. FOOTER
+           ===================================================== */
 
         footer {
-            background-color: #222;
-            color: white;
-            padding: 25px;
+            margin-top: var(--spacing-xl);
+
+            padding: var(--spacing-lg) 1rem;
+
+            background: var(--surface);
+
+            border-top: 1px solid var(--border);
+
             text-align: center;
         }
 
-        footer nav ul {
-            justify-content: center;
+        footer p {
+            color: var(--text-light);
+
+            margin-bottom: 1rem;
         }
+
+        .footer-nav ul {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 1rem;
+        }
+
+
+        /* =====================================================
+           15. TABLET
+           ===================================================== */
+
+        @media (min-width: 600px) {
+
+            .header-container {
+                flex-direction: row;
+
+                justify-content: space-between;
+            }
+
+            .content-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .quick-info {
+                grid-column: 1 / -1;
+            }
+        }
+
+
+        /* =====================================================
+           16. DESKTOP
+           ===================================================== */
+
+        @media (min-width: 900px) {
+
+            main {
+                padding-block: var(--spacing-xl);
+            }
+
+            .content-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                align-items: stretch;
+            }
+
+            .quick-info {
+                grid-column: 1 / -1;
+            }
+        }
+
+
+        /* =====================================================
+           17. LARGE DESKTOP
+           ===================================================== */
+
+        @media (min-width: 1200px) {
+
+            .content-grid {
+                grid-template-columns:
+                    1fr 1fr 0.8fr;
+            }
+
+            .quick-info {
+                grid-column: auto;
+            }
+        }
+
+
+        /* =====================================================
+           18. REDUCED MOTION
+           ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
-    <!--
-        1. ACCESSIBLE SKIP LINK
-        Allows keyboard and screen-reader users to skip navigation.
-    -->
+    <!-- Skip Navigation -->
     <a href="#main-content" class="skip-link">
         Skip to main content
     </a>
 
 
-    <!--
-        2. SEMANTIC HEADER
-        Native HTML5 landmark - no unnecessary role needed.
-    -->
-    <header>
+    <!-- ================= HEADER ================= -->
 
-        <h1>Bandari Sindhu</h1>
+    <header role="banner">
 
-        <!--
-            3. SEMANTIC NAVIGATION
-            aria-label clearly identifies this navigation landmark.
-        -->
-        <nav aria-label="Main navigation">
+        <div class="header-container">
 
-            <ul>
-                <li>
-                    <a href="index.html" aria-current="page">
-                        Home
-                    </a>
-                </li>
+            <h1>Bandari Sindhu</h1>
 
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
+            <!-- Primary Navigation -->
+            <nav
+                class="main-nav"
+                role="navigation"
+                aria-label="Main Navigation">
 
-                <li>
-                    <a href="projects.html">
-                        Projects
-                    </a>
-                </li>
+                <ul>
 
-                <li>
-                    <a href="skills.html">
-                        Skills
-                    </a>
-                </li>
+                    <li>
+                        <a href="index.html" aria-current="page">
+                            Home
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
-            </ul>
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
 
-        </nav>
+                    <li>
+                        <a href="projects.html">
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="skills.html">
+                            Skills
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- Dark / Light Mode -->
+            <button
+                type="button"
+                class="theme-button"
+                id="themeToggle"
+                aria-label="Switch between light and dark mode">
+
+                🌙 Theme
+
+            </button>
+
+        </div>
 
     </header>
 
 
-    <!--
-        4. MAIN CONTENT
-        tabindex="-1" allows the skip link to move keyboard focus here.
-    -->
+    <!-- ================= MAIN ================= -->
+
     <main id="main-content" tabindex="-1">
 
-        <!-- INTRODUCTION -->
-        <section aria-labelledby="intro-heading">
 
-            <h2 id="intro-heading">
-                Welcome to My Portfolio
-            </h2>
+        <!-- HERO SECTION -->
 
-            <p>
-                Hello! I am Bandari Sindhu, a passionate student and
-                aspiring software engineer. I enjoy creating accessible,
-                semantic websites and learning modern web technologies.
-            </p>
+        <section
+            class="hero"
+            aria-labelledby="intro-heading">
 
-            <p>
-                Explore my portfolio to learn more about my technical
-                skills, software projects, and background.
-            </p>
+            <div class="hero-content">
 
-        </section>
-
-
-        <!-- ABOUT SECTION -->
-        <section aria-labelledby="about-heading">
-
-            <h2 id="about-heading">
-                About Me
-            </h2>
-
-            <article>
-
-                <h3>Who I Am</h3>
+                <h2 id="intro-heading">
+                    Welcome to My Portfolio
+                </h2>
 
                 <p>
-                    I am interested in web development, Java programming,
-                    and modern software engineering. I continuously work
-                    to improve my problem-solving abilities and build
-                    intuitive user experiences.
+                    Hello! I am Bandari Sindhu, a passionate student
+                    and aspiring web developer.
                 </p>
-
-                <a href="about.html">
-                    Read more about Bandari Sindhu
-                </a>
-
-            </article>
-
-        </section>
-
-
-        <!-- PROJECTS SECTION -->
-        <section aria-labelledby="projects-heading">
-
-            <h2 id="projects-heading">
-                Featured Projects
-            </h2>
-
-            <article>
-
-                <h3>Portfolio Website</h3>
 
                 <p>
-                    A semantic and accessible personal portfolio website
-                    developed using modern HTML5 standards and
-                    accessibility practices.
+                    I enjoy creating accessible, semantic websites
+                    and learning modern web technologies.
                 </p>
 
-                <a href="projects.html">
-                    View all projects
-                </a>
+                <p>
+                    Explore my portfolio to learn more about my
+                    technical skills, software projects, and background.
+                </p>
 
-            </article>
+            </div>
 
         </section>
 
 
-        <!--
-            ASIDE = supplementary information
-        -->
-        <aside aria-labelledby="quick-info">
+        <!-- CONTENT GRID -->
 
-            <h2 id="quick-info">
-                Quick Information
-            </h2>
+        <div class="content-grid">
 
-            <ul>
-                <li>Web Development</li>
-                <li>Java Programming</li>
-                <li>HTML5 &amp; CSS3</li>
-                <li>JavaScript</li>
-            </ul>
 
-        </aside>
+            <!-- ABOUT CARD -->
+
+            <section
+                class="card"
+                aria-labelledby="about-heading">
+
+                <h2 id="about-heading">
+                    About Me
+                </h2>
+
+                <article>
+
+                    <h3>
+                        Who I Am
+                    </h3>
+
+                    <p>
+                        I am interested in web development,
+                        Java programming, and modern software engineering.
+                        I continuously work to refine my problem-solving
+                        abilities and build intuitive user experiences.
+                    </p>
+
+                    <a
+                        class="button"
+                        href="about.html"
+                        aria-label="Read more detailed information about Bandari Sindhu">
+
+                        Read More About Me
+
+                    </a>
+
+                </article>
+
+            </section>
+
+
+            <!-- PROJECT CARD -->
+
+            <section
+                class="card project-card"
+                aria-labelledby="projects-heading">
+
+                <h2 id="projects-heading">
+                    Featured Projects
+                </h2>
+
+                <article>
+
+                    <h3>
+                        Portfolio Website
+                    </h3>
+
+                    <p>
+                        A fully semantic and WCAG-accessible personal
+                        portfolio website developed using standard
+                        HTML5, CSS3, and modern responsive design.
+                    </p>
+
+                    <a
+                        class="button"
+                        href="projects.html"
+                        aria-label="View the complete projects page">
+
+                        View Projects
+
+                    </a>
+
+                </article>
+
+            </section>
+
+
+            <!-- QUICK INFORMATION -->
+
+            <aside
+                class="card quick-info"
+                role="complementary"
+                aria-labelledby="quick-info">
+
+                <h2 id="quick-info">
+                    Quick Information
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Web Development
+                    </li>
+
+                    <li>
+                        Java Programming
+                    </li>
+
+                    <li>
+                        HTML5 &amp; CSS3
+                    </li>
+
+                    <li>
+                        JavaScript
+                    </li>
+
+                </ul>
+
+            </aside>
+
+        </div>
 
     </main>
 
 
-    <!--
-        5. SEMANTIC FOOTER
-    -->
-    <footer>
-
-        <p>
-            &copy; 2026 Bandari Sindhu. All Rights Reserved.
-        </p>
-
-        <nav aria-label="Footer navigation">
-
-            <ul>
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-
-        </nav>
-
-    </footer>
-
-</body>
-</html>
+    <!-- ================= FOOTER ===========

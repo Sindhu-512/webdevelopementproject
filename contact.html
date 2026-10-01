@@ -28,6 +28,7 @@
 
 
     <!-- Open Graph SEO -->
+
     <meta property="og:title"
           content="Contact Bandari Sindhu">
 
@@ -38,223 +39,952 @@
           content="website">
 
 
-    <!-- SEO-friendly page title -->
-    <title>Contact Bandari Sindhu | Accessible Contact Form</title>
+    <title>
+        Contact Bandari Sindhu | Accessible Contact Form
+    </title>
 
 
     <!-- =========================================
-         ACCESSIBILITY AND STYLING
+         ADVANCED CSS3 & RESPONSIVE STYLING
     ========================================== -->
 
     <style>
 
-        /* =========================================
-           1. SKIP NAVIGATION
-        ========================================== */
+        /* =====================================================
+           1. CSS CUSTOM VARIABLES
+              LIGHT THEME
+        ====================================================== */
 
-        .skip-link {
-            position: absolute;
-            top: -50px;
-            left: 10px;
+        :root {
 
-            background-color: #000;
-            color: #fff;
+            --primary: #4b4ded;
+            --primary-dark: #3739c9;
+            --secondary: #7c3aed;
 
-            padding: 10px 16px;
+            --background: #f5f7ff;
 
-            text-decoration: none;
-            font-weight: bold;
+            --surface: #ffffff;
 
-            z-index: 1000;
-        }
+            --surface-alt: #eef2ff;
 
-        /* Show skip link when focused */
-        .skip-link:focus {
-            top: 10px;
-        }
+            --text: #1f2937;
 
+            --text-light: #64748b;
 
-        /* =========================================
-           2. KEYBOARD FOCUS
-        ========================================== */
+            --border: #dbe2f0;
 
-        :focus-visible {
-            outline: 3px solid #005fcc;
-            outline-offset: 3px;
-        }
+            --input-border: #64748b;
 
+            --success: #166534;
 
-        /* =========================================
-           BASIC PAGE STYLING
-        ========================================== */
+            --footer-background: #171717;
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            --footer-text: #ffffff;
 
-            background-color: #f5f7ff;
-            color: #222;
-        }
+            --shadow-small:
+                0 4px 12px rgba(0, 0, 0, 0.08);
 
+            --shadow-large:
+                0 18px 40px rgba(0, 0, 0, 0.12);
 
-        /* =========================================
-           HEADER
-        ========================================== */
+            --radius-small: 8px;
 
-        header {
-            background-color: #4b4ded;
-            color: #ffffff;
-            padding: 20px;
+            --radius-large: 20px;
+
+            --space-xs: 0.5rem;
+
+            --space-sm: 1rem;
+
+            --space-md: 1.5rem;
+
+            --space-lg: 2.5rem;
+
+            --space-xl: 4rem;
+
+            --max-width: 1200px;
+
+            --transition: 0.3s ease;
         }
 
 
-        /* =========================================
-           NAVIGATION
-        ========================================== */
+        /* =====================================================
+           2. DARK MODE
+              VARIABLES CHANGE DYNAMICALLY
+        ====================================================== */
 
-        nav ul {
-            display: flex;
-            flex-wrap: wrap;
+        body.dark-mode {
 
-            gap: 20px;
+            --background: #0f172a;
 
-            list-style: none;
+            --surface: #1e293b;
 
-            padding: 0;
-            margin: 15px 0 0;
-        }
+            --surface-alt: #273449;
 
-        nav a {
-            color: #ffffff;
+            --text: #f8fafc;
 
-            font-weight: bold;
+            --text-light: #cbd5e1;
 
-            text-decoration: none;
-        }
+            --border: #475569;
 
-        nav a:hover,
-        nav a:focus-visible {
-            text-decoration: underline;
-        }
+            --input-border: #94a3b8;
 
+            --primary: #818cf8;
 
-        /* =========================================
-           MAIN CONTENT
-        ========================================== */
+            --primary-dark: #a5b4fc;
 
-        main {
-            max-width: 900px;
-
-            margin: auto;
-
-            padding: 30px 20px;
+            --footer-background: #020617;
         }
 
 
-        /* =========================================
-           SECTION
-        ========================================== */
+        /* =====================================================
+           3. GLOBAL RESET
+        ====================================================== */
 
-        section {
-            background-color: #ffffff;
-
-            padding: 25px;
-
-            margin-bottom: 25px;
-
-            border-radius: 8px;
-        }
-
-
-        /* =========================================
-           FORM
-        ========================================== */
-
-        form {
-            max-width: 500px;
-
-            display: flex;
-            flex-direction: column;
-
-            gap: 1rem;
-        }
-
-
-        /* =========================================
-           FORM LABELS
-        ========================================== */
-
-        label {
-            display: block;
-
-            margin-bottom: 0.25rem;
-
-            font-weight: bold;
-        }
-
-
-        /* =========================================
-           FORM CONTROLS
-        ========================================== */
-
-        input,
-        textarea,
-        button {
-            width: 100%;
+        *,
+        *::before,
+        *::after {
 
             box-sizing: border-box;
 
-            font-size: 1rem;
+            margin: 0;
 
-            padding: 0.7rem;
+            padding: 0;
         }
 
 
-        input,
-        textarea {
-            border: 2px solid #555;
+        html {
 
-            border-radius: 4px;
+            scroll-behavior: smooth;
         }
 
 
-        /* =========================================
-           SUBMIT BUTTON
-        ========================================== */
+        body {
 
-        button {
-            background-color: #004499;
+            min-height: 100vh;
 
-            color: #ffffff;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-            border: none;
+            line-height: 1.7;
 
-            border-radius: 4px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(75, 77, 237, 0.12),
+                    transparent 35%
+                ),
+                var(--background);
+
+            color: var(--text);
+
+            transition:
+                background var(--transition),
+                color var(--transition);
+        }
+
+
+        /* =====================================================
+           4. ACCESSIBILITY
+        ====================================================== */
+
+        .skip-link {
+
+            position: fixed;
+
+            top: -100px;
+
+            left: 1rem;
+
+            background: #000;
+
+            color: #fff;
+
+            padding:
+                0.75rem 1.25rem;
+
+            border-radius:
+                0 0
+                var(--radius-small)
+                var(--radius-small);
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            z-index: 9999;
+
+            transition:
+                top var(--transition);
+        }
+
+
+        .skip-link:focus {
+
+            top: 0;
+        }
+
+
+        :focus-visible {
+
+            outline:
+                3px solid
+                #005fcc;
+
+            outline-offset: 4px;
+        }
+
+
+        /* =====================================================
+           5. HEADER
+              MOBILE-FIRST
+        ====================================================== */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                color-mix(
+                    in srgb,
+                    var(--surface) 90%,
+                    transparent
+                );
+
+            backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                var(--shadow-small);
+        }
+
+
+        .header-container {
+
+            width:
+                min(
+                    calc(100% - 2rem),
+                    var(--max-width)
+                );
+
+            margin-inline: auto;
+
+            padding-block:
+                var(--space-sm);
+
+            /* FLEXBOX */
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: var(--space-sm);
+        }
+
+
+        header h1 {
+
+            font-size:
+                clamp(
+                    1.6rem,
+                    5vw,
+                    2.4rem
+                );
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        /* =====================================================
+           6. NAVIGATION
+              FLEXBOX
+        ====================================================== */
+
+        nav ul {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            list-style: none;
+        }
+
+
+        nav a {
+
+            display: block;
+
+            padding:
+                0.55rem 0.8rem;
+
+            color: var(--text);
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+            border-radius:
+                var(--radius-small);
+
+            transition:
+                background var(--transition),
+                color var(--transition),
+                transform var(--transition);
+        }
+
+
+        nav a:hover,
+        nav a[aria-current="page"] {
+
+            background:
+                var(--primary);
+
+            color: #fff;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           7. THEME BUTTON
+        ====================================================== */
+
+        .theme-button {
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                var(--surface);
+
+            color:
+                var(--text);
+
+            padding:
+                0.6rem 1rem;
+
+            border-radius: 999px;
 
             cursor: pointer;
 
             font-weight: bold;
+
+            transition:
+                background var(--transition),
+                transform var(--transition);
         }
 
-        button:hover,
-        button:focus-visible {
-            background-color: #003366;
+
+        .theme-button:hover {
+
+            background:
+                var(--surface-alt);
+
+            transform:
+                scale(1.05);
         }
 
 
-        /* =========================================
-           FOOTER
-        ========================================== */
+        /* =====================================================
+           8. MAIN CONTAINER
+        ====================================================== */
 
-        footer {
-            background-color: #222;
+        main {
 
-            color: #ffffff;
+            width:
+                min(
+                    calc(100% - 2rem),
+                    var(--max-width)
+                );
+
+            margin-inline: auto;
+
+            padding-block:
+                var(--space-lg);
+        }
+
+
+        /* =====================================================
+           9. CONTACT HERO
+              CSS GRID
+        ====================================================== */
+
+        .contact-hero {
+
+            min-height:
+                38vh;
+
+            padding:
+                var(--space-lg);
+
+            display: grid;
+
+            place-items: center;
 
             text-align: center;
 
-            padding: 20px;
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(75, 77, 237, 0.13),
+                    rgba(124, 58, 237, 0.08)
+                );
+
+            box-shadow:
+                var(--shadow-large);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .contact-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+
+            height: 230px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(75, 77, 237, 0.15);
+
+            top: -100px;
+
+            right: -100px;
+
+            filter:
+                blur(10px);
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 800px;
+        }
+
+
+        .hero-content h2 {
+
+            font-size:
+                clamp(
+                    2rem,
+                    7vw,
+                    4rem
+                );
+
+            line-height: 1.1;
+
+            margin-bottom:
+                var(--space-md);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .hero-content p {
+
+            color:
+                var(--text-light);
+
+            font-size:
+                clamp(
+                    1rem,
+                    2vw,
+                    1.2rem
+                );
+        }
+
+
+        /* =====================================================
+           10. CONTACT GRID
+              CSS GRID
+        ====================================================== */
+
+        .contact-grid {
+
+            margin-top:
+                var(--space-xl);
+
+            display: grid;
+
+            /* MOBILE FIRST */
+
+            grid-template-columns:
+                1fr;
+
+            gap:
+                var(--space-md);
+        }
+
+
+        /* =====================================================
+           11. CONTACT INFORMATION CARD
+        ====================================================== */
+
+        .contact-info {
+
+            background:
+                var(--surface);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            padding:
+                var(--space-md);
+
+            box-shadow:
+                var(--shadow-small);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+
+        .contact-info:hover {
+
+            transform:
+                translateY(-6px);
+
+            box-shadow:
+                var(--shadow-large);
+        }
+
+
+        .contact-info h2 {
+
+            font-size:
+                clamp(
+                    1.5rem,
+                    4vw,
+                    2rem
+                );
+
+            margin-bottom:
+                var(--space-sm);
+        }
+
+
+        .contact-info p {
+
+            color:
+                var(--text-light);
+        }
+
+
+        /* =====================================================
+           12. CONTACT FORM CARD
+        ====================================================== */
+
+        .contact-form-card {
+
+            background:
+                var(--surface);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            padding:
+                var(--space-md);
+
+            box-shadow:
+                var(--shadow-large);
+        }
+
+
+        .contact-form-card h2 {
+
+            margin-bottom:
+                var(--space-sm);
+
+            font-size:
+                clamp(
+                    1.5rem,
+                    4vw,
+                    2rem
+                );
+        }
+
+
+        /* =====================================================
+           13. FORM
+              FLEXBOX
+        ====================================================== */
+
+        form {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap:
+                var(--space-md);
+
+            width: 100%;
+        }
+
+
+        /* =====================================================
+           14. FORM FIELD
+        ====================================================== */
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 0.35rem;
+        }
+
+
+        /* =====================================================
+           15. LABEL
+        ====================================================== */
+
+        label {
+
+            font-weight: bold;
+
+            color:
+                var(--text);
+        }
+
+
+        /* =====================================================
+           16. INPUT / TEXTAREA
+        ====================================================== */
+
+        input,
+        textarea {
+
+            width: 100%;
+
+            padding:
+                0.85rem 1rem;
+
+            border:
+                2px solid
+                var(--input-border);
+
+            border-radius:
+                var(--radius-small);
+
+            background:
+                var(--surface);
+
+            color:
+                var(--text);
+
+            font-size: 1rem;
+
+            font-family: inherit;
+
+            transition:
+                border-color var(--transition),
+                box-shadow var(--transition),
+                transform var(--transition);
+        }
+
+
+        input:hover,
+        textarea:hover {
+
+            border-color:
+                var(--primary);
+        }
+
+
+        input:focus,
+        textarea:focus {
+
+            border-color:
+                var(--primary);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(75, 77, 237, 0.15);
+
+            transform:
+                translateY(-1px);
+
+            outline: none;
+        }
+
+
+        textarea {
+
+            min-height:
+                150px;
+
+            resize:
+                vertical;
+        }
+
+
+        /* =====================================================
+           17. SUBMIT BUTTON
+        ====================================================== */
+
+        .submit-button {
+
+            width: 100%;
+
+            padding:
+                0.9rem 1.25rem;
+
+            border: none;
+
+            border-radius: 999px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            color: #fff;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+
+        .submit-button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                var(--shadow-small);
+        }
+
+
+        .submit-button:active {
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =====================================================
+           18. REQUIRED FIELD INDICATOR
+        ====================================================== */
+
+        .required {
+
+            color:
+                #b91c1c;
+        }
+
+
+        /* =====================================================
+           19. FOOTER
+        ====================================================== */
+
+        footer {
+
+            margin-top:
+                var(--space-xl);
+
+            padding:
+                var(--space-lg) 1rem;
+
+            background:
+                var(--footer-background);
+
+            color:
+                var(--footer-text);
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           20. TABLET
+        ====================================================== */
+
+        @media (min-width: 600px) {
+
+            .header-container {
+
+                flex-direction: row;
+
+                justify-content:
+                    space-between;
+            }
+
+
+            .contact-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(
+                            0,
+                            1fr
+                        )
+                    );
+
+                align-items:
+                    start;
+            }
+
+
+            .contact-info,
+            .contact-form-card {
+
+                padding:
+                    var(--space-lg);
+            }
+        }
+
+
+        /* =====================================================
+           21. DESKTOP
+        ====================================================== */
+
+        @media (min-width: 900px) {
+
+            main {
+
+                padding-block:
+                    var(--space-xl);
+            }
+
+
+            .contact-grid {
+
+                grid-template-columns:
+                    0.8fr
+                    1.2fr;
+
+                gap:
+                    var(--space-lg);
+            }
+        }
+
+
+        /* =====================================================
+           22. LARGE DESKTOP
+        ====================================================== */
+
+        @media (min-width: 1200px) {
+
+            .contact-grid {
+
+                grid-template-columns:
+                    minmax(
+                        300px,
+                        0.8fr
+                    )
+                    minmax(
+                        500px,
+                        1.2fr
+                    );
+            }
+        }
+
+
+        /* =====================================================
+           23. REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
         }
 
     </style>
@@ -266,10 +996,7 @@
 
 
     <!-- =========================================
-         3. ACCESSIBLE SKIP LINK
-
-         Allows keyboard and screen-reader users
-         to skip navigation.
+         ACCESSIBLE SKIP LINK
     ========================================== -->
 
     <a href="#main-content"
@@ -281,70 +1008,82 @@
 
 
     <!-- =========================================
-         4. SEMANTIC HEADER
+         SEMANTIC HEADER
     ========================================== -->
 
     <header>
 
-        <h1>Contact Me</h1>
+        <div class="header-container">
+            <h1>
+                Contact Me
+            </h1>
 
 
-        <!-- =========================================
-             5. SEMANTIC NAVIGATION
+            <!-- =========================================
+                 SEMANTIC NAVIGATION
+            ========================================== -->
 
-             aria-label identifies the navigation
-             landmark for screen readers.
-        ========================================== -->
+            <nav aria-label="Main navigation">
 
-        <nav aria-label="Main navigation">
+                <ul>
 
-            <ul>
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
+                    <li>
+                        <a href="projects.html">
+                            Projects
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="projects.html">
-                        Projects
-                    </a>
-                </li>
+                    <li>
+                        <a href="skills.html">
+                            Skills
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="skills.html">
-                        Skills
-                    </a>
-                </li>
+                    <li>
+                        <a href="contact.html"
+                           aria-current="page">
+                            Contact
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="contact.html"
-                       aria-current="page">
+                </ul>
 
-                        Contact
+            </nav>
 
-                    </a>
-                </li>
 
-            </ul>
+            <!-- =========================================
+                 LIGHT / DARK MODE BUTTON
+            ========================================== -->
 
-        </nav>
+            <button
+                type="button"
+                class="theme-button"
+                id="themeToggle"
+                aria-label="Switch between light and dark mode">
+
+                🌙 Theme
+
+            </button>
+
+        </div>
 
     </header>
 
 
     <!-- =========================================
-         6. SEMANTIC MAIN CONTENT
-
-         tabindex="-1" allows the skip link to move
-         keyboard focus directly to main content.
+         SEMANTIC MAIN CONTENT
     ========================================== -->
 
     <main id="main-content"
@@ -352,137 +1091,230 @@
 
 
         <!-- =========================================
-             CONTACT SECTION
+             CONTACT HERO
         ========================================== -->
 
-        <section aria-labelledby="contact-heading">
+        <section
+            class="contact-hero"
+            aria-labelledby="hero-heading">
+
+            <div class="hero-content">
+
+                <h2 id="hero-heading">
+                    Get In Touch
+                </h2>
+
+                <p>
+                    Have a question, project idea, or
+                    professional opportunity? Feel free
+                    to reach out through the contact form.
+                </p>
+
+            </div>
+
+        </section>
 
 
-            <h2 id="contact-heading">
-                Get In Touch
-            </h2>
+        <!-- =========================================
+             CONTACT TWO-COLUMN GRID
+        ========================================== -->
 
-
-            <!--
-                Instructions are connected to the form
-                using aria-describedby.
-            -->
-
-            <p id="form-instructions">
-
-                If you have any questions or would like
-                to reach out, please fill out the form below.
-                All fields marked with an asterisk (*)
-                are required.
-
-            </p>
+        <div class="contact-grid">
 
 
             <!-- =========================================
-                 ACCESSIBLE CONTACT FORM
+                 CONTACT INFORMATION
             ========================================== -->
 
-            <form action="#"
-                  method="post"
-                  aria-describedby="form-instructions">
+            <section
+                class="contact-info"
+                aria-labelledby="contact-info-heading">
+
+                <h2 id="contact-info-heading">
+                    Let's Connect
+                </h2>
+
+                <p>
+                    If you have any questions or would like
+                    to discuss a project, please use the
+                    contact form.
+                </p>
+
+                <p>
+                    I am always interested in learning,
+                    collaborating, and working on practical
+                    software projects.
+                </p>
+
+            </section>
 
 
-                <!-- FULL NAME -->
+            <!-- =========================================
+                 CONTACT FORM
+            ========================================== -->
 
-                <div>
-
-                    <label for="name">
-                        Full Name
-                        <span aria-hidden="true">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        autocomplete="name"
-                        required
-                        aria-required="true">
-
-                </div>
+            <section
+                class="contact-form-card"
+                aria-labelledby="contact-heading">
 
 
-                <!-- EMAIL -->
-
-                <div>
-
-                    <label for="email">
-                        Email Address
-                        <span aria-hidden="true">*</span>
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        autocomplete="email"
-                        inputmode="email"
-                        required
-                        aria-required="true">
-
-                </div>
+                <h2 id="contact-heading">
+                    Send Me a Message
+                </h2>
 
 
-                <!-- SUBJECT -->
+                <!-- =========================================
+                     FORM INSTRUCTIONS
+                ========================================== -->
 
-                <div>
+                <p id="form-instructions">
 
-                    <label for="subject">
-                        Subject
-                        <span aria-hidden="true">*</span>
-                    </label>
+                    All fields marked with an
+                    asterisk (*) are required.
 
-                    <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        autocomplete="off"
-                        required
-                        aria-required="true">
-
-                </div>
+                </p>
 
 
-                <!-- MESSAGE -->
+                <!-- =========================================
+                     ACCESSIBLE CONTACT FORM
+                ========================================== -->
 
-                <div>
-
-                    <label for="message">
-                        Message
-                        <span aria-hidden="true">*</span>
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="6"
-                        required
-                        aria-required="true"></textarea>
-
-                </div>
+                <form
+                    action="#"
+                    method="post"
+                    aria-describedby="form-instructions">
 
 
-                <!-- SUBMIT BUTTON -->
+                    <!-- FULL NAME -->
 
-                <button type="submit">
-                    Send Message
-                </button>
+                    <div class="form-group">
+
+                        <label for="name">
+
+                            Full Name
+
+                            <span
+                                class="required"
+                                aria-hidden="true">
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            autocomplete="name"
+                            required
+                            aria-required="true">
+
+                    </div>
 
 
-            </form>
+                    <!-- EMAIL -->
 
-        </section>
+                    <div class="form-group">
+
+                        <label for="email">
+
+                            Email Address
+
+                            <span
+                                class="required"
+                                aria-hidden="true">
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                            inputmode="email"
+                            required
+                            aria-required="true">
+
+                    </div>
+
+
+                    <!-- SUBJECT -->
+
+                    <div class="form-group">
+
+                        <label for="subject">
+
+                            Subject
+
+                            <span
+                                class="required"
+                                aria-hidden="true">
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            autocomplete="off"
+                            required
+                            aria-required="true">
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="form-group">
+
+                        <label for="message">
+
+                            Message
+
+                            <span
+                                class="required"
+                                aria-hidden="true">
+                                *
+                            </span>
+
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            required
+                            aria-required="true"></textarea>
+
+                    </div>
+
+
+                    <!-- SUBMIT BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="submit-button">
+
+                        Send Message
+
+                    </button>
+
+
+                </form>
+
+            </section>
+
+        </div>
 
     </main>
 
 
     <!-- =========================================
-         7. SEMANTIC FOOTER
+         SEMANTIC FOOTER
     ========================================== -->
 
     <footer>
@@ -493,6 +1325,50 @@
         </p>
 
     </footer>
+
+
+    <!-- =========================================
+         LIGHT / DARK MODE JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        themeToggle.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+
+                const darkMode =
+                    document.body.classList.contains(
+                        "dark-mode"
+                    );
+
+
+                themeToggle.textContent =
+                    darkMode
+                        ? "☀️ Light Mode"
+                        : "🌙 Dark Mode";
+
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    darkMode
+                        ? "Switch to light mode"
+                        : "Switch to dark mode"
+                );
+
+            }
+        );
+
+    </script>
 
 
 </body>

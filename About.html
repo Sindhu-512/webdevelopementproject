@@ -2,261 +2,1121 @@
 <html lang="en">
 
 <head>
-    <!-- Basic HTML5 Metadata -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Optimized Metadata -->
+    <!-- =========================
+         BASIC HTML5 METADATA
+    ========================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+
+    <!-- =========================
+         SEO METADATA
+    ========================== -->
+
     <meta name="description"
           content="Learn more about Bandari Sindhu, including education, interests, software development experience, and web technology skills.">
 
-    <meta name="author" content="Bandari Sindhu">
-    <meta name="robots" content="index, follow">
+    <meta name="author"
+          content="Bandari Sindhu">
 
-    <!-- Open Graph SEO -->
-    <meta property="og:title" content="About Bandari Sindhu">
+    <meta name="robots"
+          content="index, follow">
+
+
+    <!-- =========================
+         OPEN GRAPH SEO
+    ========================== -->
+
+    <meta property="og:title"
+          content="About Bandari Sindhu">
+
     <meta property="og:description"
           content="Learn about Bandari Sindhu's education, interests, and experience in software development and web technologies.">
-    <meta property="og:type" content="profile">
 
-    <!-- SEO-friendly title -->
-    <title>About Bandari Sindhu | Education &amp; Software Development</title>
+    <meta property="og:type"
+          content="profile">
+
+
+    <title>
+        About Bandari Sindhu | Education &amp; Software Development
+    </title>
+
 
     <style>
-        /* =========================
-           ACCESSIBILITY
-        ========================== */
 
-        /* Skip navigation link */
-        .skip-link {
-            position: absolute;
-            top: -50px;
-            left: 10px;
-            background: #000;
-            color: #fff;
-            padding: 10px 16px;
-            text-decoration: none;
-            font-weight: bold;
-            z-index: 1000;
+        /* =====================================================
+           1. CSS CUSTOM VARIABLES
+           LIGHT THEME
+        ====================================================== */
+
+        :root {
+
+            --primary: #4b4ded;
+            --primary-dark: #3739c9;
+            --secondary: #7c3aed;
+
+            --background: #f5f7ff;
+            --surface: #ffffff;
+            --surface-alt: #eef2ff;
+
+            --text: #1f2937;
+            --text-light: #64748b;
+
+            --border: #dbe2f0;
+
+            --footer-bg: #171717;
+            --footer-text: #ffffff;
+
+            --shadow-small:
+                0 4px 12px rgba(0, 0, 0, 0.08);
+
+            --shadow-large:
+                0 15px 35px rgba(0, 0, 0, 0.12);
+
+            --radius-small: 8px;
+            --radius-large: 20px;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+
+            --max-width: 1200px;
+
+            --transition: 0.3s ease;
         }
 
-        /* Show skip link when keyboard focused */
-        .skip-link:focus {
-            top: 10px;
+
+        /* =====================================================
+           2. DARK MODE
+           CSS VARIABLES ARE REDEFINED
+        ====================================================== */
+
+        body.dark-mode {
+
+            --background: #0f172a;
+            --surface: #1e293b;
+            --surface-alt: #273449;
+
+            --text: #f8fafc;
+            --text-light: #cbd5e1;
+
+            --border: #475569;
+
+            --primary: #818cf8;
+            --primary-dark: #a5b4fc;
+
+            --footer-bg: #020617;
         }
 
-        /* Visible keyboard focus */
-        :focus-visible {
-            outline: 3px solid #005fcc;
-            outline-offset: 3px;
-        }
 
-        /* Basic readable styling */
-        body {
+        /* =====================================================
+           3. GLOBAL RESET
+        ====================================================== */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f5f7ff;
-            color: #222;
-        }
-
-        header {
-            background-color: #4b4ded;
-            color: #fff;
-            padding: 20px;
-        }
-
-        nav ul {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            list-style: none;
             padding: 0;
         }
 
-        nav a {
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
+
+        html {
+            scroll-behavior: smooth;
         }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            line-height: 1.7;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(75, 77, 237, 0.12),
+                    transparent 35%
+                ),
+                var(--background);
+
+            color: var(--text);
+
+            transition:
+                background var(--transition),
+                color var(--transition);
+        }
+
+
+        /* =====================================================
+           4. ACCESSIBILITY
+        ====================================================== */
+
+        .skip-link {
+
+            position: fixed;
+
+            top: -100px;
+            left: 1rem;
+
+            background: #000;
+            color: #fff;
+
+            padding:
+                0.75rem
+                1.25rem;
+
+            border-radius:
+                0 0
+                var(--radius-small)
+                var(--radius-small);
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+            z-index: 9999;
+
+            transition:
+                top var(--transition);
+        }
+
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+
+        :focus-visible {
+
+            outline:
+                3px solid
+                #005fcc;
+
+            outline-offset: 4px;
+        }
+
+
+        /* =====================================================
+           5. HEADER
+           MOBILE-FIRST
+        ====================================================== */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                color-mix(
+                    in srgb,
+                    var(--surface) 90%,
+                    transparent
+                );
+
+            backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                var(--shadow-small);
+        }
+
+
+        .header-container {
+
+            width:
+                min(
+                    calc(100% - 2rem),
+                    var(--max-width)
+                );
+
+            margin-inline: auto;
+
+            padding-block:
+                var(--space-sm);
+
+            /* FLEXBOX */
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: var(--space-sm);
+        }
+
+
+        header h1 {
+
+            font-size:
+                clamp(
+                    1.6rem,
+                    5vw,
+                    2.4rem
+                );
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        /* =====================================================
+           6. NAVIGATION
+           FLEXBOX
+        ====================================================== */
+
+        nav ul {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            list-style: none;
+        }
+
+
+        nav a {
+
+            display: block;
+
+            padding:
+                0.55rem
+                0.8rem;
+
+            border-radius:
+                var(--radius-small);
+
+            color: var(--text);
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+            transition:
+                background var(--transition),
+                color var(--transition),
+                transform var(--transition);
+        }
+
 
         nav a:hover,
-        nav a:focus-visible {
-            text-decoration: underline;
+        nav a[aria-current="page"] {
+
+            background:
+                var(--primary);
+
+            color: #fff;
+
+            transform:
+                translateY(-2px);
         }
+
+
+        /* =====================================================
+           7. THEME BUTTON
+        ====================================================== */
+
+        .theme-button {
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                var(--surface);
+
+            color:
+                var(--text);
+
+            padding:
+                0.6rem 1rem;
+
+            border-radius: 999px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition:
+                transform var(--transition),
+                background var(--transition);
+        }
+
+
+        .theme-button:hover {
+
+            background:
+                var(--surface-alt);
+
+            transform:
+                scale(1.05);
+        }
+
+
+        /* =====================================================
+           8. MAIN CONTAINER
+        ====================================================== */
 
         main {
-            max-width: 1000px;
-            margin: auto;
-            padding: 30px 20px;
+
+            width:
+                min(
+                    calc(100% - 2rem),
+                    var(--max-width)
+                );
+
+            margin-inline: auto;
+
+            padding-block:
+                var(--space-lg);
         }
 
-        section {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
+
+        /* =====================================================
+           9. PAGE HERO
+           CSS GRID
+        ====================================================== */
+
+        .about-hero {
+
+            min-height:
+                45vh;
+
+            padding:
+                var(--space-lg);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(75, 77, 237, 0.13),
+                    rgba(124, 58, 237, 0.08)
+                );
+
+            box-shadow:
+                var(--shadow-large);
+
+            /* CSS GRID */
+            display: grid;
+
+            place-items: center;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
         }
+
+
+        .about-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(75, 77, 237, 0.15);
+
+            top: -90px;
+            right: -90px;
+
+            filter: blur(10px);
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 800px;
+        }
+
+
+        .hero-content h2 {
+
+            font-size:
+                clamp(
+                    2rem,
+                    7vw,
+                    4rem
+                );
+
+            line-height: 1.1;
+
+            margin-bottom:
+                var(--space-md);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .hero-content p {
+
+            color:
+                var(--text-light);
+
+            font-size:
+                clamp(
+                    1rem,
+                    2vw,
+                    1.2rem
+                );
+        }
+
+
+        /* =====================================================
+           10. TWO-DIMENSIONAL CONTENT GRID
+           CSS GRID
+        ====================================================== */
+
+        .about-grid {
+
+            margin-top:
+                var(--space-xl);
+
+            display: grid;
+
+            /* MOBILE FIRST */
+            grid-template-columns:
+                1fr;
+
+            gap:
+                var(--space-md);
+        }
+
+
+        /* =====================================================
+           11. CONTENT CARDS
+        ====================================================== */
+
+        .content-card {
+
+            background:
+                var(--surface);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            padding:
+                var(--space-md);
+
+            box-shadow:
+                var(--shadow-small);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+
+        .content-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                var(--shadow-large);
+        }
+
+
+        .content-card h2 {
+
+            font-size:
+                clamp(
+                    1.4rem,
+                    3vw,
+                    2rem
+                );
+
+            margin-bottom:
+                var(--space-sm);
+        }
+
+
+        .content-card h3 {
+
+            margin-bottom:
+                0.75rem;
+
+            color:
+                var(--primary);
+        }
+
+
+        .content-card p {
+
+            color:
+                var(--text-light);
+
+            margin-bottom:
+                var(--space-sm);
+        }
+
+
+        /* =====================================================
+           12. INFORMATION LIST
+           CSS GRID
+        ====================================================== */
+
+        .info-list {
+
+            margin-top:
+                var(--space-sm);
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(
+                        160px,
+                        1fr
+                    )
+                );
+
+            gap:
+                0.75rem;
+        }
+
+
+        .info-list li {
+
+            padding:
+                0.9rem;
+
+            background:
+                var(--surface-alt);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-small);
+
+            text-align: center;
+
+            font-weight: bold;
+
+            transition:
+                transform var(--transition);
+        }
+
+
+        .info-list li:hover {
+
+            transform:
+                scale(1.04);
+        }
+
+
+        /* =====================================================
+           13. FOOTER
+        ====================================================== */
 
         footer {
-            background-color: #222;
-            color: #fff;
+
+            margin-top:
+                var(--space-xl);
+
+            padding:
+                var(--space-lg) 1rem;
+
+            background:
+                var(--footer-bg);
+
+            color:
+                var(--footer-text);
+
             text-align: center;
-            padding: 20px;
         }
+
+
+        footer p {
+
+            margin-bottom:
+                var(--space-sm);
+        }
+
+
+        /* =====================================================
+           14. TABLET
+        ====================================================== */
+
+        @media (min-width: 600px) {
+
+            .header-container {
+
+                flex-direction: row;
+
+                justify-content:
+                    space-between;
+            }
+
+
+            .about-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(
+                            0,
+                            1fr
+                        )
+                    );
+            }
+
+
+            .content-card:first-child {
+
+                grid-column:
+                    1 / -1;
+            }
+        }
+
+
+        /* =====================================================
+           15. DESKTOP
+        ====================================================== */
+
+        @media (min-width: 900px) {
+
+            main {
+
+                padding-block:
+                    var(--space-xl);
+            }
+
+
+            .about-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(
+                            0,
+                            1fr
+                        )
+                    );
+
+                align-items:
+                    stretch;
+            }
+
+
+            .content-card {
+
+                padding:
+                    var(--space-lg);
+            }
+        }
+
+
+        /* =====================================================
+           16. LARGE DESKTOP
+        ====================================================== */
+
+        @media (min-width: 1200px) {
+
+            .about-grid {
+
+                grid-template-columns:
+                    1.2fr
+                    0.8fr;
+            }
+
+
+            .content-card:first-child {
+
+                grid-column:
+                    auto;
+            }
+        }
+
+
+        /* =====================================================
+           17. REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
+        }
+
     </style>
+
 </head>
 
 
 <body>
 
     <!-- =================================================
-         1. ACCESSIBLE SKIP NAVIGATION
-         Allows keyboard and screen-reader users to
-         skip directly to the main content.
+         ACCESSIBLE SKIP NAVIGATION
     ================================================== -->
 
-    <a href="#main-content" class="skip-link">
+    <a href="#main-content"
+       class="skip-link">
+
         Skip to main content
+
     </a>
 
 
     <!-- =================================================
-         2. SEMANTIC HEADER
+         SEMANTIC HEADER
     ================================================== -->
 
     <header>
 
-        <h1>About Bandari Sindhu</h1>
+        <div class="header-container">
+
+            <h1>
+                About Bandari Sindhu
+            </h1>
 
 
-        <!-- =================================================
-             3. SEMANTIC NAVIGATION
+            <!-- =================================================
+                 SEMANTIC NAVIGATION
+            ================================================== -->
 
-             aria-label identifies this navigation landmark
-             to screen readers.
-        ================================================== -->
+            <nav aria-label="Main navigation">
 
-        <nav aria-label="Main navigation">
+                <ul>
 
-            <ul>
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
+                    <li>
+                        <a href="about.html"
+                           aria-current="page">
+                            About
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="about.html" aria-current="page">
-                        About
-                    </a>
-                </li>
+                    <li>
+                        <a href="projects.html">
+                            Projects
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="projects.html">
-                        Projects
-                    </a>
-                </li>
+                    <li>
+                        <a href="skills.html">
+                            Skills
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="skills.html">
-                        Skills
-                    </a>
-                </li>
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
+                </ul>
 
-            </ul>
+            </nav>
 
-        </nav>
+
+            <!-- Theme Switch -->
+            <button
+                type="button"
+                class="theme-button"
+                id="themeToggle"
+                aria-label="Switch between light and dark mode">
+
+                🌙 Theme
+
+            </button>
+
+        </div>
 
     </header>
 
 
     <!-- =================================================
-         4. SEMANTIC MAIN CONTENT
-
-         tabindex="-1" allows the skip link to move
-         keyboard focus to the main content.
+         SEMANTIC MAIN CONTENT
     ================================================== -->
 
-    <main id="main-content" tabindex="-1">
+    <main id="main-content"
+          tabindex="-1">
 
 
         <!-- =================================================
-             ABOUT ME SECTION
+             HERO SECTION
         ================================================== -->
 
-        <section aria-labelledby="about-me-heading">
+        <section
+            class="about-hero"
+            aria-labelledby="about-hero-heading">
 
-            <h2 id="about-me-heading">
-                About Me
-            </h2>
+            <div class="hero-content">
 
-
-            <!-- Article represents independent content -->
-            <article>
-
-                <h3>My Introduction</h3>
+                <h2 id="about-hero-heading">
+                    About Me
+                </h2>
 
                 <p>
-                    I am a student interested in software development
-                    and web technologies.
+                    Discover my education, interests,
+                    programming journey, and experience
+                    in software development and modern
+                    web technologies.
                 </p>
 
-                <p>
-                    I enjoy learning programming languages and building
-                    practical projects.
-                </p>
-
-            </article>
+            </div>
 
         </section>
 
 
         <!-- =================================================
-             EDUCATION SECTION
+             TWO-DIMENSIONAL CONTENT GRID
         ================================================== -->
 
-        <section aria-labelledby="education-heading">
-
-            <h2 id="education-heading">
-                Education
-            </h2>
+        <div class="about-grid">
 
 
-            <article>
+            <!-- =================================================
+                 ABOUT ME
+            ================================================== -->
 
-                <h3>My Education</h3>
+            <section
+                class="content-card"
+                aria-labelledby="about-me-heading">
 
-                <p>
-                    I am currently pursuing my education in the
-                    field of computer science and technology.
-                </p>
+                <h2 id="about-me-heading">
+                    About Me
+                </h2>
 
-            </article>
 
-        </section>
+                <article>
+
+                    <h3>
+                        My Introduction
+                    </h3>
+
+                    <p>
+                        I am a student interested in
+                        software development and
+                        web technologies.
+                    </p>
+
+                    <p>
+                        I enjoy learning programming
+                        languages and building practical
+                        projects.
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 EDUCATION
+            ================================================== -->
+
+            <section
+                class="content-card"
+                aria-labelledby="education-heading">
+
+                <h2 id="education-heading">
+                    Education
+                </h2>
+
+
+                <article>
+
+                    <h3>
+                        My Education
+                    </h3>
+
+                    <p>
+                        I am currently pursuing my education
+                        in the field of computer science
+                        and technology.
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 INTERESTS / TECHNOLOGIES
+            ================================================== -->
+
+            <section
+                class="content-card"
+                aria-labelledby="interests-heading">
+
+                <h2 id="interests-heading">
+                    My Interests
+                </h2>
+
+                <ul class="info-list">
+
+                    <li>
+                        Software Development
+                    </li>
+
+                    <li>
+                        Web Technologies
+                    </li>
+
+                    <li>
+                        Java Programming
+                    </li>
+
+                    <li>
+                        Problem Solving
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </div>
 
     </main>
 
 
     <!-- =================================================
-         5. SEMANTIC FOOTER
+         SEMANTIC FOOTER
     ================================================== -->
 
     <footer>
 
         <p>
-            &copy; 2026 Bandari Sindhu. All Rights Reserved.
+            &copy; 2026 Bandari Sindhu.
+            All Rights Reserved.
         </p>
 
     </footer>
 
+
+    <!-- =================================================
+         DARK / LIGHT MODE
+    ================================================== -->
+
+    <script>
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        themeToggle.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+
+                const darkMode =
+                    document.body.classList.contains(
+                        "dark-mode"
+                    );
+
+
+                themeToggle.textContent =
+                    darkMode
+                        ? "☀️ Light Mode"
+                        : "🌙 Dark Mode";
+
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    darkMode
+                        ? "Switch to light mode"
+                        : "Switch to dark mode"
+                );
+
+            }
+        );
+
+    </script>
+
 </body>
+
 </html>

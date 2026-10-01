@@ -23,111 +23,622 @@
     <title>Projects | Bandari Sindhu - Software Development Portfolio</title>
 
 
-    <!-- Accessibility and Page Styling -->
     <style>
 
-        /* =========================================
-           ACCESSIBLE SKIP NAVIGATION
-        ========================================== */
+        /* =====================================================
+           1. CUSTOM CSS VARIABLES
+           Dynamic Light / Dark Theme
+        ===================================================== */
+
+        :root {
+            --primary: #4b4ded;
+            --primary-dark: #3032b8;
+            --secondary: #005fcc;
+
+            --background: #f5f7ff;
+            --surface: #ffffff;
+            --surface-alt: #eef0ff;
+
+            --text: #222222;
+            --text-light: #555555;
+
+            --border: #d9dcf0;
+            --footer-bg: #181818;
+            --footer-text: #ffffff;
+
+            --shadow-small: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 35px rgba(0, 0, 0, 0.12);
+
+            --radius-small: 10px;
+            --radius-large: 18px;
+
+            --space-xs: 8px;
+            --space-sm: 15px;
+            --space-md: 25px;
+            --space-lg: 40px;
+            --space-xl: 70px;
+
+            --max-width: 1200px;
+
+            --transition: 0.3s ease;
+        }
+
+
+        /* =====================================================
+           DARK MODE VARIABLES
+        ===================================================== */
+
+        body.dark-mode {
+            --background: #111827;
+            --surface: #1f2937;
+            --surface-alt: #273449;
+
+            --text: #f3f4f6;
+            --text-light: #d1d5db;
+
+            --border: #374151;
+
+            --primary: #7072ff;
+            --primary-dark: #8b8dff;
+            --secondary: #66aaff;
+
+            --footer-bg: #080b10;
+        }
+
+
+        /* =====================================================
+           2. GLOBAL RESET
+        ===================================================== */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(75, 77, 237, 0.12),
+                    transparent 35%
+                ),
+                var(--background);
+
+            color: var(--text);
+
+            transition:
+                background-color var(--transition),
+                color var(--transition);
+        }
+
+
+        /* =====================================================
+           3. ACCESSIBLE SKIP NAVIGATION
+        ===================================================== */
 
         .skip-link {
             position: absolute;
-            top: -50px;
+            top: -60px;
             left: 10px;
+
             background-color: #000;
             color: #fff;
-            padding: 10px 16px;
+
+            padding: 12px 18px;
+
             text-decoration: none;
             font-weight: bold;
-            z-index: 1000;
+
+            border-radius: 0 0 8px 8px;
+
+            z-index: 9999;
+
+            transition: top var(--transition);
         }
 
-        /* Make skip link visible when keyboard focused */
         .skip-link:focus {
             top: 10px;
         }
 
 
-        /* =========================================
-           KEYBOARD FOCUS
-        ========================================== */
+        /* =====================================================
+           4. KEYBOARD FOCUS
+        ===================================================== */
 
         :focus-visible {
             outline: 3px solid #005fcc;
-            outline-offset: 3px;
+            outline-offset: 4px;
         }
 
 
-        /* =========================================
-           BASIC ACCESSIBLE STYLING
-        ========================================== */
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f5f7ff;
-            color: #222;
-        }
+        /* =====================================================
+           5. HEADER
+           Flexbox for localized alignment
+        ===================================================== */
 
         header {
-            background-color: #4b4ded;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
             color: #ffffff;
+
             padding: 20px;
+
+            box-shadow: var(--shadow-large);
+        }
+
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+
+        header h1 {
+            margin: 0;
+
+            font-size: clamp(2rem, 5vw, 3.2rem);
+
+            letter-spacing: -1px;
+
+            text-align: center;
+
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* =====================================================
+           6. NAVIGATION
+           Flexbox
+        ===================================================== */
+
+        nav {
+            width: 100%;
         }
 
         nav ul {
             display: flex;
+
             flex-wrap: wrap;
-            gap: 20px;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px 20px;
+
             list-style: none;
+
             padding: 0;
-            margin: 15px 0 0;
+            margin: 0;
         }
+
 
         nav a {
+            display: inline-block;
+
             color: #ffffff;
+
             font-weight: bold;
             text-decoration: none;
+
+            padding: 8px 12px;
+
+            border-radius: var(--radius-small);
+
+            transition:
+                background-color var(--transition),
+                transform var(--transition);
         }
 
-        nav a:hover,
-        nav a:focus-visible {
-            text-decoration: underline;
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
         }
+
+
+        nav a[aria-current="page"] {
+            background-color: #ffffff;
+            color: var(--primary);
+        }
+
+
+        /* =====================================================
+           7. THEME BUTTON
+           Flexbox
+        ===================================================== */
+
+        .theme-button {
+            border: 2px solid rgba(255, 255, 255, 0.8);
+
+            background: rgba(255, 255, 255, 0.12);
+
+            color: #ffffff;
+
+            padding: 9px 16px;
+
+            border-radius: 50px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                background-color var(--transition),
+                transform var(--transition);
+        }
+
+
+        .theme-button:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           8. MAIN CONTENT
+        ===================================================== */
 
         main {
-            max-width: 1000px;
+            width: min(100% - 30px, var(--max-width));
+
             margin: auto;
-            padding: 30px 20px;
+
+            padding:
+                var(--space-lg)
+                0
+                var(--space-xl);
         }
 
-        section {
-            background-color: #ffffff;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
+
+        /* =====================================================
+           9. PROJECT SECTION
+        ===================================================== */
+
+        .projects-section {
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--surface),
+                    var(--surface-alt)
+                );
+
+            padding: clamp(20px, 4vw, 45px);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-large);
+
+            box-shadow: var(--shadow-large);
+
+            position: relative;
+
+            overflow: hidden;
         }
+
+
+        .projects-section::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            top: -90px;
+            right: -90px;
+
+            background: var(--primary);
+
+            opacity: 0.08;
+
+            border-radius: 50%;
+
+            filter: blur(5px);
+        }
+
+
+        .section-heading {
+            margin-top: 0;
+            margin-bottom: var(--space-lg);
+
+            text-align: center;
+
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+
+            color: var(--primary);
+        }
+
+
+        /* =====================================================
+           10. CSS GRID
+           Complex two-dimensional project layout
+        ===================================================== */
+
+        .project-grid {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: var(--space-md);
+        }
+
+
+        /* =====================================================
+           11. PROJECT CARDS
+           Flexbox for localized content alignment
+        ===================================================== */
 
         article {
-            border-bottom: 1px solid #ccc;
-            padding: 20px 0;
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            min-height: 280px;
+
+            padding: clamp(20px, 3vw, 30px);
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-large);
+
+            box-shadow: var(--shadow-small);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+
+            position: relative;
+
+            overflow: hidden;
         }
 
-        article:last-child {
-            border-bottom: none;
+
+        article::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 5px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--secondary)
+                );
         }
+
+
+        article:hover {
+            transform: translateY(-8px);
+
+            box-shadow: var(--shadow-large);
+
+            border-color: var(--primary);
+        }
+
+
+        article h3 {
+            margin-top: 5px;
+
+            margin-bottom: 12px;
+
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
+
+            color: var(--primary);
+        }
+
+
+        article p {
+            margin-top: 0;
+
+            color: var(--text-light);
+
+            flex-grow: 1;
+        }
+
 
         article a {
-            color: #003f91;
+            align-self: flex-start;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 10px 16px;
+
+            margin-top: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            color: #ffffff;
+
             font-weight: bold;
+
+            text-decoration: none;
+
+            border-radius: 50px;
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
         }
 
+
+        article a:hover {
+            transform: translateY(-2px);
+
+            box-shadow: 0 8px 18px rgba(75, 77, 237, 0.3);
+        }
+
+
+        /* =====================================================
+           12. FOOTER
+        ===================================================== */
+
         footer {
-            background-color: #222;
-            color: #ffffff;
+            background-color: var(--footer-bg);
+
+            color: var(--footer-text);
+
             text-align: center;
-            padding: 20px;
+
+            padding: 25px 20px;
+
+            border-top: 1px solid var(--border);
+        }
+
+
+        footer p {
+            margin: 0;
+
+            font-size: 0.95rem;
+        }
+
+
+        /* =====================================================
+           13. TABLET RESPONSIVE DESIGN
+           600px+
+        ===================================================== */
+
+        @media (min-width: 600px) {
+
+            .header-container {
+                flex-direction: row;
+
+                justify-content: space-between;
+
+                align-items: center;
+            }
+
+
+            header h1 {
+                text-align: left;
+            }
+
+
+            nav {
+                width: auto;
+            }
+
+
+            nav ul {
+                justify-content: flex-end;
+            }
+
+
+            .project-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        /* =====================================================
+           14. DESKTOP RESPONSIVE DESIGN
+           900px+
+        ===================================================== */
+
+        @media (min-width: 900px) {
+
+            main {
+                padding-top: 60px;
+            }
+
+
+            .project-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+
+            article {
+                min-height: 330px;
+            }
+
+        }
+
+
+        /* =====================================================
+           15. LARGE DESKTOP
+           1200px+
+        ===================================================== */
+
+        @media (min-width: 1200px) {
+
+            .project-grid {
+                grid-template-columns:
+                    repeat(3, minmax(280px, 1fr));
+
+                gap: 30px;
+            }
+
+
+            article {
+                padding: 35px;
+            }
+
+        }
+
+
+        /* =====================================================
+           16. REDUCED MOTION ACCESSIBILITY
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+
         }
 
     </style>
@@ -139,8 +650,6 @@
 
     <!-- =========================================
          1. SKIP NAVIGATION
-         Allows keyboard users to skip the header
-         and go directly to the main content.
     ========================================== -->
 
     <a href="#main-content" class="skip-link">
@@ -154,62 +663,71 @@
 
     <header>
 
-        <h1>My Projects</h1>
+        <div class="header-container">
+
+            <h1>My Projects</h1>
 
 
-        <!-- =========================================
-             3. SEMANTIC NAVIGATION
+            <!-- =========================================
+                 3. SEMANTIC NAVIGATION
+            ========================================== -->
 
-             aria-label helps screen readers identify
-             this navigation landmark.
-        ========================================== -->
+            <nav aria-label="Main navigation">
 
-        <nav aria-label="Main navigation">
+                <ul>
 
-            <ul>
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
+                    <li>
+                        <a href="projects.html"
+                           aria-current="page">
+                            Projects
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="projects.html" aria-current="page">
-                        Projects
-                    </a>
-                </li>
+                    <li>
+                        <a href="skills.html">
+                            Skills
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="skills.html">
-                        Skills
-                    </a>
-                </li>
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
+                    <li>
+                        <button
+                            type="button"
+                            class="theme-button"
+                            id="themeToggle"
+                            aria-label="Switch to dark mode">
+                            🌙 Dark Mode
+                        </button>
+                    </li>
 
-            </ul>
+                </ul>
 
-        </nav>
+            </nav>
+
+        </div>
 
     </header>
 
 
     <!-- =========================================
          4. SEMANTIC MAIN CONTENT
-
-         tabindex="-1" allows the skip link to move
-         keyboard focus to this main section.
     ========================================== -->
 
     <main id="main-content" tabindex="-1">
@@ -219,63 +737,102 @@
              PROJECT SECTION
         ========================================== -->
 
-        <section aria-labelledby="project-list-heading">
+        <section
+            class="projects-section"
+            aria-labelledby="project-list-heading">
 
-            <h2 id="project-list-heading">
+            <h2
+                id="project-list-heading"
+                class="section-heading">
+
                 Featured Projects
+
             </h2>
 
 
-            <!-- PROJECT 1 -->
-            <article>
+            <!-- =========================================
+                 CSS GRID PROJECT CONTAINER
+            ========================================== -->
 
-                <h3>Personal Portfolio</h3>
-
-                <p>
-                    A semantic HTML5 portfolio website designed
-                    according to modern accessibility principles
-                    and web standards.
-                </p>
-
-                <a href="portfolio.html">
-                    View Personal Portfolio Project
-                </a>
-
-            </article>
+            <div class="project-grid">
 
 
-            <!-- PROJECT 2 -->
-            <article>
+                <!-- PROJECT 1 -->
 
-                <h3>Dream Achiever</h3>
+                <article>
 
-                <p>
-                    A website project designed to help users organize
-                    their goals and work towards achieving them.
-                </p>
+                    <div>
 
-                <a href="dream-achiever.html">
-                    View Dream Achiever Project
-                </a>
+                        <h3>
+                            Personal Portfolio
+                        </h3>
 
-            </article>
+                        <p>
+                            A semantic HTML5 portfolio website designed
+                            according to modern accessibility principles
+                            and web standards.
+                        </p>
+
+                    </div>
+
+                    <a href="portfolio.html">
+                        View Personal Portfolio Project
+                    </a>
+
+                </article>
 
 
-            <!-- PROJECT 3 -->
-            <article>
+                <!-- PROJECT 2 -->
 
-                <h3>IR Sensor Alarm</h3>
+                <article>
 
-                <p>
-                    A hardware-based IoT project using an IR sensor
-                    to detect objects and trigger an alarm.
-                </p>
+                    <div>
 
-                <a href="ir-sensor.html">
-                    View IR Sensor Alarm Project
-                </a>
+                        <h3>
+                            Dream Achiever
+                        </h3>
 
-            </article>
+                        <p>
+                            A website project designed to help users
+                            organize their goals and work towards
+                            achieving them.
+                        </p>
+
+                    </div>
+
+                    <a href="dream-achiever.html">
+                        View Dream Achiever Project
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 3 -->
+
+                <article>
+
+                    <div>
+
+                        <h3>
+                            IR Sensor Alarm
+                        </h3>
+
+                        <p>
+                            A hardware-based IoT project using an
+                            IR sensor to detect objects and trigger
+                            an alarm.
+                        </p>
+
+                    </div>
+
+                    <a href="ir-sensor.html">
+                        View IR Sensor Alarm Project
+                    </a>
+
+                </article>
+
+
+            </div>
 
         </section>
 
@@ -293,6 +850,51 @@
         </p>
 
     </footer>
+
+
+    <!-- =========================================
+         6. LIGHT / DARK MODE JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+        const body =
+            document.body;
+
+
+        themeToggle.addEventListener("click", function () {
+
+            body.classList.toggle("dark-mode");
+
+
+            if (body.classList.contains("dark-mode")) {
+
+                themeToggle.textContent =
+                    "☀️ Light Mode";
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to light mode"
+                );
+
+            } else {
+
+                themeToggle.textContent =
+                    "🌙 Dark Mode";
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to dark mode"
+                );
+
+            }
+
+        });
+
+    </script>
 
 </body>
 

@@ -24,108 +24,641 @@
     <title>Skills | Bandari Sindhu - Technical &amp; Programming Skills</title>
 
 
-    <!-- =========================================
-         ACCESSIBILITY AND STYLING
-    ========================================== -->
-
     <style>
 
-        /* =========================================
-           SKIP NAVIGATION
-        ========================================== */
+        /* =====================================================
+           1. CUSTOM CSS VARIABLES
+           Light Theme
+        ===================================================== */
+
+        :root {
+            --primary: #4b4ded;
+            --primary-dark: #3032b8;
+            --secondary: #005fcc;
+
+            --background: #f5f7ff;
+            --surface: #ffffff;
+            --surface-alt: #eef0ff;
+
+            --text: #222222;
+            --text-light: #555555;
+
+            --border: #d9dcf0;
+
+            --footer-bg: #222222;
+            --footer-text: #ffffff;
+
+            --shadow-small:
+                0 4px 12px rgba(0, 0, 0, 0.08);
+
+            --shadow-large:
+                0 15px 35px rgba(0, 0, 0, 0.12);
+
+            --radius-small: 10px;
+            --radius-large: 18px;
+
+            --space-xs: 8px;
+            --space-sm: 15px;
+            --space-md: 25px;
+            --space-lg: 40px;
+            --space-xl: 70px;
+
+            --max-width: 1200px;
+
+            --transition: 0.3s ease;
+        }
+
+
+        /* =====================================================
+           2. DARK MODE VARIABLES
+        ===================================================== */
+
+        body.dark-mode {
+            --primary: #7779ff;
+            --primary-dark: #999bff;
+            --secondary: #66aaff;
+
+            --background: #111827;
+            --surface: #1f2937;
+            --surface-alt: #273449;
+
+            --text: #f3f4f6;
+            --text-light: #d1d5db;
+
+            --border: #374151;
+
+            --footer-bg: #080b10;
+        }
+
+
+        /* =====================================================
+           3. GLOBAL RESET
+        ===================================================== */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(75, 77, 237, 0.12),
+                    transparent 35%
+                ),
+                var(--background);
+
+            color: var(--text);
+
+            transition:
+                background-color var(--transition),
+                color var(--transition);
+        }
+
+
+        /* =====================================================
+           4. ACCESSIBLE SKIP NAVIGATION
+        ===================================================== */
 
         .skip-link {
             position: absolute;
-            top: -50px;
+
+            top: -60px;
             left: 10px;
+
             background-color: #000;
             color: #fff;
-            padding: 10px 16px;
+
+            padding: 12px 18px;
+
             text-decoration: none;
             font-weight: bold;
-            z-index: 1000;
+
+            border-radius: 0 0 8px 8px;
+
+            z-index: 9999;
+
+            transition: top var(--transition);
         }
 
-        /* Show skip link when focused */
         .skip-link:focus {
             top: 10px;
         }
 
 
-        /* =========================================
-           KEYBOARD FOCUS
-        ========================================== */
+        /* =====================================================
+           5. KEYBOARD FOCUS
+        ===================================================== */
 
         :focus-visible {
             outline: 3px solid #005fcc;
-            outline-offset: 3px;
+            outline-offset: 4px;
         }
 
 
-        /* =========================================
-           BASIC ACCESSIBLE STYLING
-        ========================================== */
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f5f7ff;
-            color: #222;
-        }
+        /* =====================================================
+           6. HEADER
+           Flexbox for localized alignment
+        ===================================================== */
 
         header {
-            background-color: #4b4ded;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
             color: #ffffff;
+
             padding: 20px;
+
+            box-shadow: var(--shadow-large);
         }
+
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: auto;
+
+            display: flex;
+
+            /* Mobile-first */
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: var(--space-md);
+        }
+
+
+        header h1 {
+            margin: 0;
+
+            text-align: center;
+
+            font-size:
+                clamp(2rem, 5vw, 3.2rem);
+
+            letter-spacing: -1px;
+
+            text-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* =====================================================
+           7. NAVIGATION
+           Flexbox
+        ===================================================== */
+
+        nav {
+            width: 100%;
+        }
+
 
         nav ul {
             display: flex;
+
             flex-wrap: wrap;
-            gap: 20px;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px 18px;
+
             list-style: none;
+
             padding: 0;
-            margin: 15px 0 0;
+            margin: 0;
         }
+
 
         nav a {
+            display: inline-block;
+
             color: #ffffff;
+
             font-weight: bold;
+
             text-decoration: none;
+
+            padding: 8px 12px;
+
+            border-radius: var(--radius-small);
+
+            transition:
+                background-color var(--transition),
+                transform var(--transition);
         }
 
-        nav a:hover,
-        nav a:focus-visible {
-            text-decoration: underline;
+
+        nav a:hover {
+            background-color:
+                rgba(255, 255, 255, 0.18);
+
+            transform: translateY(-2px);
         }
+
+
+        nav a[aria-current="page"] {
+            background-color: #ffffff;
+            color: var(--primary);
+        }
+
+
+        /* =====================================================
+           8. DARK MODE BUTTON
+        ===================================================== */
+
+        .theme-button {
+            border: 2px solid
+                rgba(255, 255, 255, 0.8);
+
+            background:
+                rgba(255, 255, 255, 0.12);
+
+            color: #ffffff;
+
+            padding: 9px 16px;
+
+            border-radius: 50px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                background-color var(--transition),
+                transform var(--transition);
+        }
+
+
+        .theme-button:hover {
+            background:
+                rgba(255, 255, 255, 0.25);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           9. MAIN CONTENT
+        ===================================================== */
 
         main {
-            max-width: 1000px;
+            width: min(
+                calc(100% - 30px),
+                var(--max-width)
+            );
+
             margin: auto;
-            padding: 30px 20px;
+
+            padding:
+                var(--space-lg)
+                0
+                var(--space-xl);
         }
 
-        section {
-            background-color: #ffffff;
+
+        /* =====================================================
+           10. SKILLS SECTION
+        ===================================================== */
+
+        .skills-section {
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--surface),
+                    var(--surface-alt)
+                );
+
+            padding:
+                clamp(20px, 5vw, 50px);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            box-shadow:
+                var(--shadow-large);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        /* Decorative CSS3 element */
+
+        .skills-section::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            top: -90px;
+            right: -90px;
+
+            background:
+                var(--primary);
+
+            opacity: 0.08;
+
+            border-radius: 50%;
+
+            filter: blur(5px);
+        }
+
+
+        /* =====================================================
+           11. SECTION HEADING
+        ===================================================== */
+
+        .section-heading {
+            margin-top: 0;
+
+            margin-bottom: var(--space-lg);
+
+            text-align: center;
+
+            font-size:
+                clamp(1.8rem, 4vw, 2.7rem);
+
+            color: var(--primary);
+        }
+
+
+        /* =====================================================
+           12. CSS GRID
+           Complex two-dimensional layout
+        ===================================================== */
+
+        .skills-grid {
+            display: grid;
+
+            /* Mobile-first */
+            grid-template-columns: 1fr;
+
+            gap: var(--space-md);
+        }
+
+
+        /* =====================================================
+           13. SKILL CARDS
+           Flexbox for localized alignment
+        ===================================================== */
+
+        .skill-card {
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            min-height: 150px;
+
             padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 8px;
+
+            text-align: center;
+
+            background:
+                var(--surface);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            box-shadow:
+                var(--shadow-small);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
         }
 
-        section ul {
-            padding-left: 25px;
+
+        /* Hover animation */
+
+        .skill-card:hover {
+            transform:
+                translateY(-8px)
+                scale(1.02);
+
+            box-shadow:
+                var(--shadow-large);
+
+            border-color:
+                var(--primary);
         }
 
-        section li {
-            margin-bottom: 10px;
+
+        /* =====================================================
+           14. SKILL ICON / NUMBER
+        ===================================================== */
+
+        .skill-number {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 55px;
+            height: 55px;
+
+            margin-bottom: 12px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            color: #ffffff;
+
+            font-size: 1.2rem;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 8px 18px
+                rgba(75, 77, 237, 0.25);
         }
+
+
+        .skill-card h3 {
+            margin: 0;
+
+            font-size:
+                clamp(1.1rem, 2.5vw, 1.4rem);
+
+            color: var(--primary);
+        }
+
+
+        /* =====================================================
+           15. FOOTER
+        ===================================================== */
 
         footer {
-            background-color: #222;
-            color: #ffffff;
+            background-color:
+                var(--footer-bg);
+
+            color:
+                var(--footer-text);
+
             text-align: center;
-            padding: 20px;
+
+            padding: 25px 20px;
+
+            border-top:
+                1px solid var(--border);
+        }
+
+
+        footer p {
+            margin: 0;
+
+            font-size: 0.95rem;
+        }
+
+
+        /* =====================================================
+           16. TABLET
+           600px+
+        ===================================================== */
+
+        @media (min-width: 600px) {
+
+            .header-container {
+                flex-direction: row;
+
+                justify-content:
+                    space-between;
+
+                align-items: center;
+            }
+
+
+            header h1 {
+                text-align: left;
+            }
+
+
+            nav {
+                width: auto;
+            }
+
+
+            nav ul {
+                justify-content: flex-end;
+            }
+
+
+            /* CSS Grid: 2 columns */
+
+            .skills-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        /* =====================================================
+           17. DESKTOP
+           900px+
+        ===================================================== */
+
+        @media (min-width: 900px) {
+
+            main {
+                padding-top: 60px;
+            }
+
+
+            /* CSS Grid: 3 columns */
+
+            .skills-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+
+            .skill-card {
+                min-height: 180px;
+            }
+
+        }
+
+
+        /* =====================================================
+           18. LARGE DESKTOP
+           1200px+
+        ===================================================== */
+
+        @media (min-width: 1200px) {
+
+            .skills-grid {
+                grid-template-columns:
+                    repeat(3, minmax(280px, 1fr));
+
+                gap: 30px;
+            }
+
+
+            .skill-card {
+                padding: 35px;
+            }
+
+        }
+
+
+        /* =====================================================
+           19. REDUCED MOTION
+           Accessibility
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+
         }
 
     </style>
@@ -137,9 +670,6 @@
 
     <!-- =========================================
          1. ACCESSIBLE SKIP LINK
-
-         Allows keyboard and screen-reader users
-         to skip directly to the main content.
     ========================================== -->
 
     <a href="#main-content" class="skip-link">
@@ -153,62 +683,71 @@
 
     <header>
 
-        <h1>My Skills</h1>
+        <div class="header-container">
+
+            <h1>My Skills</h1>
 
 
-        <!-- =========================================
-             3. SEMANTIC NAVIGATION
+            <!-- =========================================
+                 3. SEMANTIC NAVIGATION
+            ========================================== -->
 
-             aria-label identifies this navigation
-             landmark to screen readers.
-        ========================================== -->
+            <nav aria-label="Main navigation">
 
-        <nav aria-label="Main navigation">
+                <ul>
 
-            <ul>
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
+                    <li>
+                        <a href="projects.html">
+                            Projects
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="projects.html">
-                        Projects
-                    </a>
-                </li>
+                    <li>
+                        <a href="skills.html"
+                           aria-current="page">
+                            Skills
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="skills.html" aria-current="page">
-                        Skills
-                    </a>
-                </li>
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
+                    <li>
+                        <button
+                            type="button"
+                            class="theme-button"
+                            id="themeToggle"
+                            aria-label="Switch to dark mode">
+                            🌙 Dark Mode
+                        </button>
+                    </li>
 
-            </ul>
+                </ul>
 
-        </nav>
+            </nav>
+
+        </div>
 
     </header>
 
 
     <!-- =========================================
          4. SEMANTIC MAIN CONTENT
-
-         tabindex="-1" allows the skip link to
-         move keyboard focus here.
     ========================================== -->
 
     <main id="main-content" tabindex="-1">
@@ -218,31 +757,119 @@
              TECHNICAL SKILLS SECTION
         ========================================== -->
 
-        <section aria-labelledby="technical-skills-heading">
+        <section
+            class="skills-section"
+            aria-labelledby="technical-skills-heading">
 
-            <h2 id="technical-skills-heading">
+            <h2
+                id="technical-skills-heading"
+                class="section-heading">
+
                 Technical Skills
+
             </h2>
 
 
-            <!-- Semantic unordered list of skills -->
-            <ul>
+            <!-- =========================================
+                 CSS GRID SKILLS CONTAINER
+            ========================================== -->
 
-                <li>HTML5</li>
+            <div class="skills-grid">
 
-                <li>CSS</li>
 
-                <li>JavaScript</li>
+                <!-- SKILL 1 -->
 
-                <li>Java</li>
+                <article class="skill-card">
 
-                <li>
-                    Data Structures and Algorithms
-                </li>
+                    <div
+                        class="skill-number"
+                        aria-hidden="true">
+                        01
+                    </div>
 
-                <li>Web Development</li>
+                    <h3>HTML5</h3>
 
-            </ul>
+                </article>
+
+
+                <!-- SKILL 2 -->
+
+                <article class="skill-card">
+
+                    <div
+                        class="skill-number"
+                        aria-hidden="true">
+                        02
+                    </div>
+
+                    <h3>CSS</h3>
+
+                </article>
+
+
+                <!-- SKILL 3 -->
+
+                <article class="skill-card">
+
+                    <div
+                        class="skill-number"
+                        aria-hidden="true">
+                        03
+                    </div>
+
+                    <h3>JavaScript</h3>
+
+                </article>
+
+
+                <!-- SKILL 4 -->
+
+                <article class="skill-card">
+
+                    <div
+                        class="skill-number"
+                        aria-hidden="true">
+                        04
+                    </div>
+
+                    <h3>Java</h3>
+
+                </article>
+
+
+                <!-- SKILL 5 -->
+
+                <article class="skill-card">
+
+                    <div
+                        class="skill-number"
+                        aria-hidden="true">
+                        05
+                    </div>
+
+                    <h3>
+                        Data Structures and Algorithms
+                    </h3>
+
+                </article>
+
+
+                <!-- SKILL 6 -->
+
+                <article class="skill-card">
+
+                    <div
+                        class="skill-number"
+                        aria-hidden="true">
+                        06
+                    </div>
+
+                    <h3>Web Development</h3>
+
+                </article>
+
+
+            </div>
 
         </section>
 
@@ -260,6 +887,51 @@
         </p>
 
     </footer>
+
+
+    <!-- =========================================
+         6. LIGHT / DARK MODE JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+        const body =
+            document.body;
+
+
+        themeToggle.addEventListener("click", function () {
+
+            body.classList.toggle("dark-mode");
+
+
+            if (body.classList.contains("dark-mode")) {
+
+                themeToggle.textContent =
+                    "☀️ Light Mode";
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to light mode"
+                );
+
+            } else {
+
+                themeToggle.textContent =
+                    "🌙 Dark Mode";
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to dark mode"
+                );
+
+            }
+
+        });
+
+    </script>
 
 </body>
 
